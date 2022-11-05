@@ -88,11 +88,11 @@ main {
 	font-weight: bold;
 }
 
-#board-container > span:nth-child(odd) {
+#board-container > span:nth-child(even) {
 	color: rgba(83, 2, 2, 0.842);
 }
 
-#board-container > span:nth-child(even) {
+#board-container > span:nth-child(odd) {
 	color: rgba(108, 165, 165, 0.832);
 }
 
