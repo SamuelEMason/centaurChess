@@ -14,31 +14,33 @@ function renderBoard() {
 	for (let i = 0; i < 8; i++) {
 
 		if ( i % 2 == 0) {
-			color1 = 'light-square';
-			color2 = 'dark-square';
-		}
-		else {
 			color1 = 'dark-square';
 			color2 = 'light-square';
+		}
+		else {
+			color1 = 'light-square';
+			color2 = 'dark-square';
 		}
 
 		for(let j = 0; j < 8; j += 2) {
 			
 			let square = document.createElement('div');
 			square.className = color1;
+			square.classList.add('square');
 			square.id = `${fileLetter[i]}${j + 1}`
 			square.style.gridArea = square.id
 			board.appendChild(square);
 
 			square = document.createElement('div');
 			square.className = color2;
+			square.classList.add('square');
 			square.id = `${fileLetter[i]}${j + 2}`
 			square.style.gridArea = square.id
 			board.appendChild(square);
 		}
 	}	
 	notateBoard();
-	console.log(board);
+	console.log(document.getElementsByClassName('piece'));
 }
 /*
 	Function notates square with the given file lettering or rank number
@@ -65,21 +67,44 @@ function notateBoard () {
 	}
 }
 
+function initializePieces() {
+	let fileLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+	for(let i = 0; i < 8; i++) {
+		addPiece(`${fileLetter[i]}2`, 'images/piece-icons/white-pawn.png');
+		addPiece(`${fileLetter[i]}7`, 'images/piece-icons/black-pawn.png');
+	}
+	addPiece(`${fileLetter[0]}1`, 'images/piece-icons/white-rook.png');
+	addPiece(`${fileLetter[0]}8`, 'images/piece-icons/black-rook.png');
+	addPiece(`${fileLetter[1]}1`, 'images/piece-icons/white-knight.png');
+	addPiece(`${fileLetter[1]}8`, 'images/piece-icons/black-knight.png');
+	addPiece(`${fileLetter[2]}1`, 'images/piece-icons/white-bishop.png');
+	addPiece(`${fileLetter[2]}8`, 'images/piece-icons/black-bishop.png');
+	addPiece(`${fileLetter[3]}1`, 'images/piece-icons/white-queen.png');
+	addPiece(`${fileLetter[3]}8`, 'images/piece-icons/black-queen.png');
+	addPiece(`${fileLetter[4]}1`, 'images/piece-icons/white-king.png');
+	addPiece(`${fileLetter[4]}8`, 'images/piece-icons/black-king.png');
+	addPiece(`${fileLetter[5]}1`, 'images/piece-icons/white-bishop.png');
+	addPiece(`${fileLetter[5]}8`, 'images/piece-icons/black-bishop.png');
+	addPiece(`${fileLetter[6]}1`, 'images/piece-icons/white-knight.png');
+	addPiece(`${fileLetter[6]}8`, 'images/piece-icons/black-knight.png');
+	addPiece(`${fileLetter[7]}1`, 'images/piece-icons/white-rook.png');
+	addPiece(`${fileLetter[7]}8`, 'images/piece-icons/black-rook.png');
+	
+}
+
+function addPiece(location, url) {
+	let targetSquare = document.getElementById(location);
+	let newPiece = document.createElement('div');
+	newPiece.className = 'piece';
+	newPiece.style.backgroundImage = `url(${url})`;
+	targetSquare.appendChild(newPiece);
+}
 
 
-const startingPositions = {
-	whiteRook: ['a1', 'h1'],
-	whiteKnight: ['b1', 'g1'],
-	whiteBishop: ['c1', 'f1'],
-	whiteQueen: 'd1',
-	whiteKing: 'e1',
-	whitePawn: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'],
-	blackRook: ['a8', 'h8'],
-	blackKnight: ['b8', 'g8'],
-	blackBishop: ['c8', 'f8'],
-	blackQueen: 'd8',
-	blackKing: 'e8',
-	blackPawn: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'],
+function Piece(url, location) {
+	this.url = url;
+	this.location = location;
 }
 
 document.body.addEventListener('onload', renderBoard());
+initializePieces();
