@@ -1,0 +1,116 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	/* background-color: gray; */
+	background-color: rgba(0, 0, 0, 0.87);
+}
+
+.container {
+	background-image: url('images/woodgrain2.jpg');
+}
+
+header {
+	background-color: rgba(0, 0, 0, 0.873);
+	padding: 25px;
+	padding-bottom: 10px;
+}
+
+header {
+	color: rgba(209, 209, 50, 0.655);
+	text-shadow: 3px 1px 5px rgba(40, 5, 5, 0.571);
+	letter-spacing: 0.2em;
+	font-size: small;
+	text-align: end;
+	border-bottom: 2px dotted rgba(255, 255, 0, 0.458);
+}
+
+main {
+	background-color: rgba(26, 27, 29, 0.67);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px;
+}
+
+#board-container {
+	width: 700px;
+	height: 700px;
+	display: grid;
+	grid-template-areas: 
+	"__ __ __ __ __ __ __ __ __ __"
+	"_  bd bd bd bd bd bd bd bd 8"
+	"_  bd bd bd bd bd bd bd bd 7"
+	"_  bd bd bd bd bd bd bd bd 6"
+	"_  bd bd bd bd bd bd bd bd 5"
+	"_  bd bd bd bd bd bd bd bd 4"
+	"_  bd bd bd bd bd bd bd bd 3"
+	"_  bd bd bd bd bd bd bd bd 2"
+	"_  bd bd bd bd bd bd bd bd 1"
+	"_  a  b  c  d  e  f  g  h  i";
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+}
+
+
+#board {
+	background-image: url('images/marble-herringbone.jpg');
+	grid-area: bd;
+
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	grid-template-areas: 
+	"a8 b8 c8 d8 e8 f8 g8 h8"
+	"a7 b7 c7 d7 e7 f7 g7 h7"
+	"a6 b6 c6 d6 e6 f6 g6 h6"
+	"a5 b5 c5 d5 e5 f5 g5 h5"
+	"a4 b4 c4 d4 e4 f4 g4 h4"
+	"a3 b3 c3 d3 e3 f3 g3 h3"
+	"a2 b2 c2 d2 e2 f2 g2 h2"
+	"a1 b1 c1 d1 e1 f1 g1 h1";
+}
+
+#blank {
+	grid-area: _;
+}
+
+.light-square {
+	background-color: rgba(83, 126, 126, 0.636);
+}
+
+.dark-square {
+	background-color: rgba(58, 0, 0, 0.69);
+}
+
+#board-container > span {
+	font-weight: bold;
+}
+
+#board-container > span:nth-child(odd) {
+	color: rgba(83, 2, 2, 0.842);
+}
+
+#board-container > span:nth-child(even) {
+	color: rgba(108, 165, 165, 0.832);
+}
+
+.file-notation {
+	position: relative;
+	bottom: 18px;
+	left: 2px;
+}
+
+.rank-notation {
+	position: relative;
+	top: 0px;
+	right: 10px;
+}
+
+.piece {
+	background-color: black;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
